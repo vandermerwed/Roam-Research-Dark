@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.1
+@version      1.0.2
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -97,18 +97,19 @@
     "Forest Green": "46, 165, 44",
     "Jumbo": "117, 115, 128"
 }
-@advanced   checkbox  using-theme           "Use theme"                     1
-@advanced   checkbox  hide-shortcuts        "Hide shortcuts heading"        1
-@advanced   checkbox  using-clickup         "Using embedded in ClickUp?"    0
-@advanced   color     color-heading-1       "H1 Colour"                     #FFFFFF
-@advanced   color     color-heading-2       "H2 Colour"                     #FFFFFF
-@advanced   color     color-heading-3       "H3 Colour"                     #FFFFFF
-@advanced   color     color-link            "Link Colour"                   #0ab4ff
-@advanced   color     color-link-namespace  "Namespaced Link Colour"        rgb(8, 199, 224)
-@advanced   color     color-tag-text        "Tag Text Colour"               #69e3ff
-@advanced   color     color-tag-bg          "Tag Background Colour"         #263139
-@advanced   color     color-highlight-text  "Highlight Text Colour"         #FFFFFF
-@advanced   color     color-highlight-bg    "Highlight Background Colour"   #69e3ff
+@advanced   checkbox  using-theme               "Use theme"                     1
+@advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
+@advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
+@advanced   color     color-heading-1           "H1 Colour"                     #FFFFFF
+@advanced   color     color-heading-2           "H2 Colour"                     #FFFFFF
+@advanced   color     color-heading-3           "H3 Colour"                     #FFFFFF
+@advanced   color     color-link                "Link Colour"                   #0ab4ff
+@advanced   color     color-link-namespace      "Namespaced Link Colour"        rgb(8, 199, 224)
+@advanced   color     color-tag-text            "Tag Text Colour"               #69e3ff
+@advanced   color     color-tag-bg              "Tag Background Colour"         #263139
+@advanced   color     color-highlight-text      "Highlight Text Colour"         #FFFFFF
+@advanced   color     color-highlight-bg        "Highlight Background Colour"   #69e3ff
+@advanced   color     color-highlight-select    "Select Highlight Colour"       #0ab4ff33
 ==/UserStyle== */
 /*! Roam Research Dark v0.0.1 (2020-13-17) */
 /*! Repository: https://github.com/vandermerwed/Roam-Research-Dark    */
@@ -318,7 +319,12 @@
     
     /* Highlights */
     .block-highlight-blue {
-        background-color: rgba(39, 174, 96, .2);
+        if using-theme {
+            background-color: rgba(color-theme, 0.2);
+            /*color: rgba(color-theme, 1.0);*/
+        } else {
+            background-color: color-highlight-select;
+        }
     }
     .block-highlight-yellow {
         background-color: rgba(121, 85, 72, .60);
