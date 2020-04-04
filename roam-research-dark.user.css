@@ -24,7 +24,7 @@
 
     "Courier": "'Courier New', Courier, monospace",
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
-    "Menlo": "Menlo, monospace"
+    "Menlo*": "Menlo, monospace"
 }
 @advanced   select  font-heading-2    "H2 Font" {
     "Georgia": "Georgia, serif",
@@ -42,7 +42,7 @@
 
     "Courier": "'Courier New', Courier, monospace",
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
-    "Menlo": "Menlo, monospace"
+    "Menlo*": "Menlo, monospace"
 }
 @advanced   select  font-heading-3    "H3 Font" {
     "Georgia": "Georgia, serif",
@@ -60,14 +60,14 @@
 
     "Courier": "'Courier New', Courier, monospace",
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
-    "Menlo": "Menlo, monospace"
+    "Menlo*": "Menlo, monospace"
 }
 @advanced   select  font-body    "Body Font" {
     "Georgia": "Georgia, serif",
     "Palatino Linotype (Book Antiqua)": "'Palatino Linotype', 'Book Antiqua', Palatino, serif",
     "Times New Roman (Times)": "'Times New Roman', Times, serif, serif",
 
-    "Arial (Helvetica)": "Arial, Helvetica, sans-serif",
+    "Arial (Helvetica)*": "Arial, Helvetica, sans-serif",
     "Arial Black (Gadget)": "'Arial Black', Gadget, sans-serif",
     "Impact (Charcoal)": "Impact, Charcoal, sans-serif",
     "Inter": "Inter, sans-serif",
