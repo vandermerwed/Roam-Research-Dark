@@ -1,11 +1,11 @@
 /* ==UserStyle==
-@name        Roam Research Dark
-@namespace   vandermerwed
-@version     0.0.1
-@homepageURL https://github.com/vandermerwed/Roam-Research-Dark
-@updateURL   https://vandermerwed.github.io/Roam-Research-Dark/roam-research-dark.user.css
-@license     CC-BY-SA-4.0
-@author      vandermerwed
+@name         Roam Research Dark
+@namespace    vandermerwed
+@version      1.0.0
+@homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
+@updateURL    https://vandermerwed.github.io/Roam-Research-Dark/roam-research-dark.user.css
+@license      CC-BY-SA-4.0
+@author       vandermerwed
 @preprocessor stylus
 
 @advanced   select  font-heading-1    "H1 Font" {
