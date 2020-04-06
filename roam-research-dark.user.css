@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.3
+@version      1.0.4
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -80,7 +80,6 @@
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
     "Menlo": "Menlo, monospace"
 }
-@advanced   range     content-width             "Content width"                 [570, 570, 1000, 10, "px"]
 @advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
 @advanced   checkbox  using-wide-layout         "Use wide layout"               0
 @advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
