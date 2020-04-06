@@ -80,6 +80,10 @@
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
     "Menlo": "Menlo, monospace"
 }
+@advanced   range     content-width             "Content width"                 [570, 570, 1000, 10, "px"]
+@advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
+@advanced   checkbox  using-wide-layout         "Use wide layout"               0
+@advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
 @advanced   select    color-theme       "Theme" {
     "#TeamOrange": "255, 152, 0",
     "#TeamBlue": "51, 122, 183",
@@ -98,11 +102,9 @@
     "Jumbo": "117, 115, 128"
 }
 @advanced   checkbox  using-theme               "Use theme"                     1
-@advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
-@advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
-@advanced   color     color-heading-1           "H1 Colour"                     #FFFFFF
-@advanced   color     color-heading-2           "H2 Colour"                     #FFFFFF
-@advanced   color     color-heading-3           "H3 Colour"                     #FFFFFF
+@advanced   color     color-heading-1           "H1 Colour"                     #d5d6d7
+@advanced   color     color-heading-2           "H2 Colour"                     #d5d6d7
+@advanced   color     color-heading-3           "H3 Colour"                     #d5d6d7
 @advanced   color     color-link                "Link Colour"                   #0ab4ff
 @advanced   color     color-link-namespace      "Namespaced Link Colour"        rgb(8, 199, 224)
 @advanced   color     color-tag-text            "Tag Text Colour"               #69e3ff
@@ -133,15 +135,10 @@
     }
     
     /* change font for headings */
-    h1,
-    h1 div,
-    h1 textarea,
-    .rm-level1 div,
     #right-sidebar .rm-level2,
     /* page headings in right sidebar */
     .rm-reference-main .rm-level3,
     /* page headings in referenced items */
-    .rm-level1 textarea,
     .roam-log-preview h1,
     h1.rm-title-display,
     h1.rm-title-display textarea,
@@ -153,12 +150,30 @@
         color: #d5d6d7 !important;
     }
     
+    h1,
+    h1 div,
+    h1 textarea,
+    .rm-level1 textarea,
+    .rm-level1 div {
+        font-family: font-heading-1;
+        font-weight: 600 !important;
+        if using-theme {
+            color: #d5d6d7 !important;
+        } else {
+            color: color-heading-1 !important;
+        }
+    }
+    
     h2,
     h2 div,
     h2 textarea {
         font-family: font-heading-2;
         font-weight: 600 !important;
-        color: #d5d6d7 !important;
+        if using-theme {
+            color: #d5d6d7 !important;
+        } else {
+            color: color-heading-2;
+        }
     }
     
     h3,
@@ -166,13 +181,34 @@
     h3 textarea {
         font-family: font-heading-3;
         font-weight: 600 !important;
-        color: #d5d6d7 !important;
+        if using-theme {
+            color: #d5d6d7 !important;
+        } else {
+            color: color-heading-3;
+        }
     }
     
     /* ### UI Changes ###*/
     /* less space below page heading */
     .roam-body .roam-app .roam-main .roam-article .rm-title-display {
         margin-bottom: 10px;
+    }
+    
+    if using-wide-layout {
+                
+        /*#right-sidebar div:only-child {
+            ^[0] {
+                flex-basis: 50% !important;
+            }
+        }*/
+        
+        .roam-center div:first-child {
+            padding-right: calc((100% - 700px) / 2);
+        }
+
+        .roam-center .roam-article .rm-block-text {
+            max-width: 700px;
+        }
     }
     
     /* ### RIGHT SIDE BAR ### */
@@ -191,7 +227,7 @@
 
     /* Hide "SHORTCUTS" heading */
     .starred-pages-wrapper .flex-h-box {
-        if not hide-shortcuts {
+        if hide-shortcuts {
             display: none;
         }
     }
