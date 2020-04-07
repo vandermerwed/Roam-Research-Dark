@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.7
+@version      1.0.8
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -181,6 +181,7 @@
         margin-bottom: 10px;
     }
     
+    /* wide content layout */
     if using-wide-layout {
                 
         /*#right-sidebar div:only-child {
@@ -192,24 +193,47 @@
         .roam-center div:first-child {
             padding-right: calc((100% - 1000px) / 2) !important;
         }
-        @media (orientation: portrait) {
-            .roam-center div:first-child {
-                padding-right: calc((100% - 600px) / 2) !important;
-            }
+        
+        .roam-block-container {
+            max-width: calc(1000px - 80px);
         }
 
         .roam-center .roam-article .rm-block-text {
             max-width: 1000px;
         }
         
-        .roam-block-container {
-            max-width: calc(1000px - 80px);
+        @media (orientation: portrait) {
+            .roam-center div:first-child {
+                padding-right: calc((100% - 730px) / 2) !important;
+            }
+
+            .roam-center .roam-article .rm-block-text {
+                max-width: 665px;
+            }
+
         }
     }
     
     /* ### RIGHT SIDE BAR ### */
     #right-sidebar {
         background-color: rgb(43, 52, 59) !important;
+    }
+    
+    /* ### LEFT SIDE BAR ### */
+
+    /* update menu item hover colour*/
+    .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content {
+        .log-button {
+            &:hover {
+                background-color: #1e272e !important;
+            }
+        }
+
+        .starred-pages-wrapper .starred-pages .page {
+            &:hover {
+                background-color: #1e272e !important;
+            }
+        }
     }
 
     /* more subtle logo */
@@ -222,18 +246,15 @@
     }
 
     /* Hide "SHORTCUTS" heading */
-    .starred-pages-wrapper .flex-h-box {
-        if hide-shortcuts {
-            display: none;
+    .starred-pages-wrapper {
+        .flex-h-box  {
+            if hide-shortcuts {
+                display: none;
+            }
         }
-    }
-
-    .starred-pages-wrapper > div:first-child {
-        margin: 0 -18px;
-    }
-    
-    .block-border-left {
-        border-left: 1px solid rgba(255, 255, 255, 0.25);
+        & > div:first-child {
+            margin: 0 -18px;
+        }
     }
     
     /* ### All Pages View ### */
@@ -250,9 +271,19 @@
     
     /* ### EDITOR ### */
 
+    /* Tone tweets down a tad */
+    .twitter-tweet.twitter-tweet-rendered {
+        opacity: 0.7;
+    }
+
+    /* Fix vertical line on left of bullets */
     .roam-block-container {
         border-radius: 0px;
-        /* Fix vertical line on left of bullets */
+    }
+    
+    /* tone down color of lines between bullets */
+    .block-border-left {
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .roam-body-main,
@@ -384,10 +415,17 @@
     }
     
     /* Blocks */
-    .roam-block > span > div {
-        background-color: #182026 !important;
+    .roam-block > span > div:not(.slider):not(.roam-table) {
+        /* TODO: Figure out how to style only block embeds and not tabels, queries, etc.*/
+        /*border: 1px solid rgba(255,255,255,0.25);*/
+        background: rgba(255, 255, 255, 0.05) !important;
+        /*
+        &:hover {
+            background-color: rgba(255,255,255,0.05) !important;
+        }*/
     }
     .roam-block .rm-block-ref {
+        border: none;
         background-color: transparent !important;
     }
     .rm-block-ref:hover {
@@ -396,6 +434,50 @@
             border-bottom: 1px solid rgba(color-theme, 1.0);
         } else {
             border-bottom: 1px solid color-link;
+        }
+    }
+    
+    /* versioning widget */
+    .version-bullet {
+        font-size: 12px;
+        background-color: rgb(color-theme) !important;
+    }
+    
+    /* slider widget */
+    .slider {
+        max-width: 250px !important;
+        
+        .bp3-slider-progress.bp3-intent-primary {
+            background-color: rgb(color-theme) !important;
+        }
+    }
+    
+    /* term select */
+    .rm-block-text select {
+        background-color: rgb(43, 52, 59) !important;
+        border: none;
+    }
+    
+    /* alias styling */
+    .rm-block-text > span > span:not(.roam-highlight) > span {
+        color: rgb(color-theme) !important;
+        background-color: rgb(43, 52, 59) !important;
+    }
+    
+    /* Image Drag Handle */
+    .react-resizable-handle {
+        background: none;
+        /*clip-path: polygon(50% 0,50% 50%,0 50%);
+        background: linear-gradient(135deg,#fff 0,#fff 2px);*/
+        
+        &:after {
+            font-size: 25px;
+            position: absolute;
+            right: 3px;
+            bottom: 3px;
+            line-height: 30px;
+            content: "˼";
+            color: rgba(255, 255, 255, 0.5) !important;
         }
     }
 
@@ -407,7 +489,7 @@
     }
     .bp3-elevation-3 {
         background-color: rgb(43, 52, 59) !important;
-        box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(255, 255, 255, 0.15) 0px 0px 3px 1px;
+        box-shadow: 0 2px 16px 0 rgba(0,0,0,.4);
         color: #5C7080 !important;
     }
     .bp3-datepicker {
@@ -416,7 +498,7 @@
         color: #fff !important
     }
     .bp3-popover {
-        box-shadow: 0 2px 16px 0 rgba(0,0,0,.4)
+        box-shadow: 0 2px 16px 0 rgba(0,0,0,.4);
     }
     .bp3-popover-content {
         background-color: #384047 !important;
@@ -427,6 +509,16 @@
     }
     .bp3-popover-arrow-border {
         fill: rgb(255, 255, 255) !important;
+    }
+    .bp3-dialog {
+        background-color: rgb(43, 52, 59) !important;
+        box-shadow: 0 2px 16px 0 rgba(0,0,0,.4);
+        color: #5C7080 !important;
+        
+        textarea {
+            color: #d9d9d9 !important;
+            background-color: rgba(56, 64, 71, 0.8) !important;
+        }
     }
     .bp3-menu {
         /*background-color: rgb(43, 52, 59) !important;*/
@@ -444,9 +536,10 @@
         background-color: rgba(56, 64, 71, 0.8) !important;
         background-image: none !important;
         color: #d9d9d9 !important;
+        padding: 0;
     }
     .bp3-button.bp3-minimal:hover {
-        background-color: rgba(56, 64, 71,.7) !important;
+        background-color: rgba(56, 64, 71,.4) !important;
     }
     
     if using-clickup {
