@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.5
+@version      1.0.6
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -199,10 +199,6 @@
         
         .roam-block-container {
             max-width: calc(1000px - 80px);
-        }
-        
-        #right-sidebar .rm-block-text {
-            max-width: calc(100% - 115px);
         }
     }
     
