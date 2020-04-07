@@ -83,6 +83,9 @@
 @advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
 @advanced   checkbox  using-wide-layout         "Use wide layout"               0
 @advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
+@advanced   color     color-heading-1           "H1 Colour"                     #e1e1e1
+@advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
+@advanced   color     color-heading-3           "H3 Colour"                     #808080
 @advanced   select    color-theme       "Theme" {
     "#TeamOrange": "255, 152, 0",
     "#TeamBlue": "51, 122, 183",
@@ -101,9 +104,6 @@
     "Jumbo": "117, 115, 128"
 }
 @advanced   checkbox  using-theme               "Use theme"                     1
-@advanced   color     color-heading-1           "H1 Colour"                     #d5d6d7
-@advanced   color     color-heading-2           "H2 Colour"                     #d5d6d7
-@advanced   color     color-heading-3           "H3 Colour"                     #d5d6d7
 @advanced   color     color-link                "Link Colour"                   #0ab4ff
 @advanced   color     color-link-namespace      "Namespaced Link Colour"        rgb(8, 199, 224)
 @advanced   color     color-tag-text            "Tag Text Colour"               #69e3ff
@@ -116,7 +116,7 @@
 /*! Repository: https://github.com/vandermerwed/Roam-Research-Dark    */
 /*! License:    https://creativecommons.org/licenses/by-sa/4.0/ */
 
-@-moz-document url-prefix("https://roamresearch.com/#/app"), url-prefix("https://roamresearch.com/#/v8") {
+@-moz-document url-prefix("https://roamresearch.com/#/app"), url-prefix("https://roamresearch.com/#/v8"), url-prefix("https://app.clickup.com/") {
     /* ### ASTROBLADE ### */
     /* fade loading astrolabe */
     .loading-astrolabe img {
@@ -156,11 +156,7 @@
     .rm-level1 div {
         font-family: font-heading-1;
         font-weight: 600 !important;
-        if using-theme {
-            color: #d5d6d7 !important;
-        } else {
-            color: color-heading-1 !important;
-        }
+        color: color-heading-1 !important;
     }
     
     h2,
@@ -168,11 +164,7 @@
     h2 textarea {
         font-family: font-heading-2;
         font-weight: 600 !important;
-        if using-theme {
-            color: #d5d6d7 !important;
-        } else {
-            color: color-heading-2;
-        }
+        color: color-heading-2 !important;
     }
     
     h3,
@@ -180,11 +172,7 @@
     h3 textarea {
         font-family: font-heading-3;
         font-weight: 600 !important;
-        if using-theme {
-            color: #d5d6d7 !important;
-        } else {
-            color: color-heading-3;
-        }
+        color: color-heading-3 !important;
     }
     
     /* ### UI Changes ###*/
@@ -202,11 +190,19 @@
         }*/
         
         .roam-center div:first-child {
-            padding-right: calc((100% - 700px) / 2);
+            padding-right: calc((100% - 1000px) / 2) !important;
         }
 
         .roam-center .roam-article .rm-block-text {
-            max-width: 700px;
+            max-width: 1000px;
+        }
+        
+        .roam-block-container {
+            max-width: calc(1000px - 80px);
+        }
+        
+        #right-sidebar .rm-block-text {
+            max-width: calc(100% - 115px);
         }
     }
     
