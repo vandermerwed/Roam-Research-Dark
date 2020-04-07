@@ -18,9 +18,9 @@ Install [Stylus](https://add0n.com/stylus.html) for either [Firefox](https://add
 - [ ] Code Block styling
 - [ ] Text size customisation
 - [ ] Font weight customisation for headings
-- [ ] Improve Block `{{embed: ((xyz))}}` styling
+- [x] Improve Block `{{embed: ((xyz))}}` styling
 - [ ] Improve `/` menu styling
-- [ ] Improve `{{alias: ((xyz)) abc}}` styling
+- [x] Improve `{{alias: ((xyz)) abc}}` styling
 - [ ] Improve Date Picker Styling
 - [ ] Better Filter styling
 
