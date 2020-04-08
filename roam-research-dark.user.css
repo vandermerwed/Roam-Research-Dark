@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.8
+@version      1.0.9
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -491,6 +491,14 @@
         background-color: rgb(43, 52, 59) !important;
         box-shadow: 0 2px 16px 0 rgba(0,0,0,.4);
         color: #5C7080 !important;
+        /* Style highlighted item in '/' menu */
+        div.dont-unfocus-block {
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: #1e272e !important;
+            }
+        }
     }
     .bp3-datepicker {
         background-color: rgb(43, 52, 59) !important;
