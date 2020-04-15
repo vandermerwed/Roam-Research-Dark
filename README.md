@@ -27,3 +27,6 @@ Install [Stylus](https://add0n.com/stylus.html) for either [Firefox](https://add
 ## Contributing
 
 Feel free to create issues on this repo or reach out to me on [twitter](https://twitter.com/vandermerwed). Pull requests welcome.
+
+## Other great themes worth checking out
+- https://github.com/apg-dev/roam-theme-bear
