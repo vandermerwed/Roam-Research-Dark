@@ -273,7 +273,11 @@
 
     /* Tone tweets down a tad */
     .twitter-tweet.twitter-tweet-rendered {
+        transition: opacity .25s ease-in-out;
         opacity: 0.7;
+        &:hover{
+            opacity: 0.85;   
+        }
     }
 
     /* Fix vertical line on left of bullets */
@@ -464,6 +468,21 @@
         background-color: rgb(43, 52, 59) !important;
     }
     
+    /* sync quick capture styling */
+    .rm-quick-capture-sync-modal {
+        background-color: rgb(43, 52, 59) !important;
+        h3.level3 {
+            color: #d5d6d7 !important;
+        }
+        #quick-capture-history {
+            > div {
+                > li {
+                    color: #abaeb0 !important;
+                }
+            }
+        }
+    }
+    
     /* Image Drag Handle */
     .react-resizable-handle {
         background: none;
@@ -486,6 +505,11 @@
         background: #FFFFFF;
         background: rgba(255, 255, 255, .05);
         color: #d9d9d9 !important;
+    }
+    .bp3-text-overflow-ellipsis {
+        /* Credit to  @Malcolm Ocean */
+        text-overflow: unset;
+        white-space: unset;
     }
     .bp3-elevation-3 {
         background-color: rgb(43, 52, 59) !important;
