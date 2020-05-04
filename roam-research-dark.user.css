@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.9
+@version      1.0.10
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -81,8 +81,13 @@
     "Menlo": "Menlo, monospace"
 }
 @advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
+@advanced   checkbox  using-unset-overflow      "Show more text in link search" 0
 @advanced   checkbox  using-wide-layout         "Use wide layout"               0
 @advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
+@advanced   checkbox  using-breathing           "Use breathing exercise loader" 0
+@advanced   color     color-breathing-from      "Breathing Colour 1"            #1F7A8C
+@advanced   color     color-breathing-to        "Breathing Colour 2"            #BFDBF7
+@advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
 @advanced   color     color-heading-1           "H1 Colour"                     #e1e1e1
 @advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
 @advanced   color     color-heading-3           "H3 Colour"                     #808080
@@ -118,10 +123,43 @@
 
 @-moz-document url-prefix("https://roamresearch.com/#/app"), url-prefix("https://roamresearch.com/#/v8"), url-prefix("https://app.clickup.com/") {
     /* ### ASTROBLADE ### */
-    /* fade loading astrolabe */
-    .loading-astrolabe img {
-        opacity: 0.3;
-        filter: invert(100%);
+    
+    if using-breathing {
+
+        /* Breathing Loader */
+        /* https://codepen.io/Mathi_C/pen/mMWaaW */
+        .loading-astrolabe {
+            height: 100px;
+            width: 100px;
+            border-radius: 200px;
+            margin: auto;
+            margin-top: 200px;
+        }
+
+        .loading-astrolabe {
+            animation-name: orb_1;
+            animation-duration: 5s;
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
+        }
+
+        @keyframes orb_1 {
+            from { transform: scale(1); background: color-breathing-from;}
+            to { transform: scale(3); background: color-breathing-to;}
+        }
+
+        /* Hide original loader */
+        .loading-astrolabe img {
+            display: none;
+        }
+    } else {
+        /* fade loading astrolabe */
+        .loading-astrolabe img {
+            opacity: 0.3;
+            filter: invert(100%);
+        }
     }
         
     /* ### GLOBAL ###*/
@@ -273,7 +311,11 @@
 
     /* Tone tweets down a tad */
     .twitter-tweet.twitter-tweet-rendered {
+        transition: opacity .25s ease-in-out;
         opacity: 0.7;
+        &:hover{
+            opacity: 0.85;   
+        }
     }
 
     /* Fix vertical line on left of bullets */
@@ -464,6 +506,21 @@
         background-color: rgb(43, 52, 59) !important;
     }
     
+    /* sync quick capture styling */
+    .rm-quick-capture-sync-modal {
+        background-color: rgb(43, 52, 59) !important;
+        h3.level3 {
+            color: #d5d6d7 !important;
+        }
+        #quick-capture-history {
+            > div {
+                > li {
+                    color: #abaeb0 !important;
+                }
+            }
+        }
+    }
+    
     /* Image Drag Handle */
     .react-resizable-handle {
         background: none;
@@ -486,6 +543,13 @@
         background: #FFFFFF;
         background: rgba(255, 255, 255, .05);
         color: #d9d9d9 !important;
+    }
+    if using-unset-overflow {
+        .bp3-text-overflow-ellipsis {
+            /* Credit to  @Malcolm Ocean */
+            text-overflow: unset;
+            white-space: unset;
+        }
     }
     .bp3-elevation-3 {
         background-color: rgb(43, 52, 59) !important;
