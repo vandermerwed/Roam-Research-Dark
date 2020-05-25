@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.10
+@version      1.0.11
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -80,9 +80,11 @@
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
     "Menlo": "Menlo, monospace"
 }
+@advanced   text      color-tags                "Custom tag colours"            ("Roam Research" "#263139_#69e3ff") ("Roam" "#263139_#69e3ff")
 @advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
 @advanced   checkbox  using-unset-overflow      "Show more text in link search" 0
 @advanced   checkbox  using-wide-layout         "Use wide layout"               0
+@advanced   checkbox  using-split-screen        "Use split-screen layout"       0
 @advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
 @advanced   checkbox  using-breathing           "Use breathing exercise loader" 0
 @advanced   color     color-breathing-from      "Breathing Colour 1"            #1F7A8C
@@ -91,6 +93,7 @@
 @advanced   color     color-heading-1           "H1 Colour"                     #e1e1e1
 @advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
 @advanced   color     color-heading-3           "H3 Colour"                     #808080
+@advanced   range     using-brighter-bold       "Use brighter bold"             [85, 0, 100, 5, '%']
 @advanced   select    color-theme       "Theme" {
     "#TeamOrange": "255, 152, 0",
     "#TeamBlue": "51, 122, 183",
@@ -171,6 +174,21 @@
         font-family: font-body;
     }
     
+    /* Enable scroll bar */
+    div::-webkit-scrollbar {
+        width: 10px;
+    }
+    div::-webkit-scrollbar-track {
+        background-color: #9993 !important;
+    }
+    div::-webkit-scrollbar-thumb {
+        background-color: #9999 !important;
+    }
+    
+    .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:contains("DAILY NOTES") {
+        color: red;
+    }
+    
     /* change font for headings */
     #right-sidebar .rm-level2,
     /* page headings in right sidebar */
@@ -219,28 +237,47 @@
         margin-bottom: 10px;
     }
     
+    /* Improve Checkbox alignment */
+
+    label.check-container {
+      margin-bottom: 11px;
+      margin-right: 3px;
+    }
+    
+    if using-split-screen {
+        .roam-center {
+            --align-item: left;
+            flex-basis: 40% !important;
+
+            
+        }
+    }
+    
+    
     /* wide content layout */
     if using-wide-layout {
-                
-        /*#right-sidebar div:only-child {
-            ^[0] {
-                flex-basis: 50% !important;
-            }
-        }*/
-        
         .roam-center div:first-child {
-            padding-right: calc((100% - 1000px) / 2) !important;
+            padding-right: calc((100% - 900px) / 2) !important;
         }
         
         .roam-block-container {
-            max-width: calc(1000px - 80px);
+            max-width: calc(1024px - 80px);
         }
 
         .roam-center .roam-article .rm-block-text {
-            max-width: 1000px;
+            max-width: 680px;
         }
         
-        @media (orientation: portrait) {
+        #right-sidebar {
+            #roam-right-sidebar-content {
+                .rm-block-text {
+                    max-width: 680px;
+                }
+            }
+        }
+
+
+        /*@media (orientation: portrait) {
             .roam-center div:first-child {
                 padding-right: calc((100% - 730px) / 2) !important;
             }
@@ -249,7 +286,7 @@
                 max-width: 665px;
             }
 
-        }
+        }*/
     }
     
     /* ### RIGHT SIDE BAR ### */
@@ -493,6 +530,24 @@
             background-color: rgb(color-theme) !important;
         }
     }
+        
+    /* Show empty query message */
+    /* .rm-block-text {
+            .rm-reference-main {
+                div:first-child:empty {
+                    &:after {
+                        content: "Query returned no results";
+                    }
+                }
+            }
+        }
+    */
+    
+
+    .rm-block-text strong {
+        color: lighten(rgba(color-theme, 1), using-brighter-bold);
+    }
+    
     
     /* term select */
     .rm-block-text select {
@@ -537,7 +592,24 @@
             color: rgba(255, 255, 255, 0.5) !important;
         }
     }
+        
+    /* Custom data tags */
+    if color-tags {
+        for key in keys(color-tags) {
+            if key {
+                span.rm-page-ref[data-tag=\"{key}\"] {
+                    background-color: unquote(split(_,values(color-tags)[index(keys(color-tags), key)])[0]);
+                    color: unquote(split(_,values(color-tags)[index(keys(color-tags), key)])[1]);
+                }
 
+                div.bp3-elevation-3 div[title=\"{key}\"] {
+                    background-color: unquote(split(_,values(color-tags)[index(keys(color-tags), key)])[0]);
+                    color: unquote(split(_,values(color-tags)[index(keys(color-tags), key)])[1]);
+                }
+            }
+        }
+    }
+    
     /* Elements */
     .bp3-input {
         background: #FFFFFF;
@@ -621,7 +693,7 @@
         }
 
         #buffer {
-            bottom: 156px !important;
+            bottom: 184px !important;
             right: 22px !important;
         }
     } else {
@@ -634,4 +706,25 @@
             right: 18px !important;
         }
     }
+    
+    
+    /* ### EXPERIMENTAL ###*/
+    /* .roam-sidebar-container {
+        overflow: hidden !important;
+    }
+    .roam-sidebar-container.noselect:before {
+        // background-image: url(https://images.unsplash.com/photo-1589809489704-71becdce06f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+        background-image: url(https://images.unsplash.com/photo-1559310589-2673bfe16970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+        width: 100%;
+        height: 100%;
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: 75% 40%;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: 0.3;
+        filter: blur(4px);
+    }*/
 }
