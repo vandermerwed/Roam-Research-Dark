@@ -31,3 +31,4 @@ Feel free to create issues on this repo or reach out to me on [twitter](https://
 ## Other great themes worth checking out
 - https://github.com/apg-dev/roam-theme-bear
 - https://github.com/jmharris903/Railscast-for-Roam-Research
+- https://github.com/theianjones/roam-research-themes
