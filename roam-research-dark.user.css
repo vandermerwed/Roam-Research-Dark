@@ -87,6 +87,7 @@
 @advanced   checkbox  using-split-screen        "Use split-screen layout"       0
 @advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
 @advanced   checkbox  using-breathing           "Use breathing exercise loader" 0
+@advanced   checkbox  using-block-highlight     "Use active block highlight"    0
 @advanced   color     color-breathing-from      "Breathing Colour 1"            #1F7A8C
 @advanced   color     color-breathing-to        "Breathing Colour 2"            #BFDBF7
 @advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
@@ -310,6 +311,19 @@
             }
         }
     }
+    
+    /* highlight current block */
+    if using-block-highlight {
+        .rm-block-input {
+            background: rgba(10,10,10,0.2) !important;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            border-radius: 5px;
+        }
+    }
+
 
     /* more subtle logo */
     #roam-sidebar-logo img {
