@@ -748,6 +748,14 @@
                 }
 
                 > div {
+                    position: relative;
+                    /*> div.flex-h-box {
+                        position: sticky;
+                        top: 0;
+                        align-self: flex-start;
+                        background-color: #1e272e !important;
+                    }*/
+                    
                     display: flex;
                     flex: 1 0 40%;
                     flex-direction: column;
@@ -758,6 +766,8 @@
                     background-color: #2b343b !important;
                     align-self: flex-start;
                     margin-right: 0px !important;
+                    height: 780px;
+                    overflow-y: scroll;
 
                     /* Below is for masonry layout */
                     if(using-masonry-layout) {
