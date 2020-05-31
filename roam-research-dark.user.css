@@ -179,7 +179,8 @@
     
     /* Enable scroll bar */
     div::-webkit-scrollbar {
-        width: 10px;
+        width: 2px !important;
+        height: 2px !important;
     }
     div::-webkit-scrollbar-track {
         background-color: #9993 !important;
