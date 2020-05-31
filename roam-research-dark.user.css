@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.12
+@version      1.0.13
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -80,21 +80,23 @@
     "Lucida Console (Monaco)": "'Lucida Console', Monaco, monospace",
     "Menlo": "Menlo, monospace"
 }
-@advanced   text      color-tags                "Custom tag colours"            ("Roam Research" "#263139_#69e3ff") ("Roam" "#263139_#69e3ff")
-@advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"        1
-@advanced   checkbox  using-unset-overflow      "Show more text in link search" 0
-@advanced   checkbox  using-wide-layout         "Use wide layout"               0
-@advanced   checkbox  using-split-screen        "Use split-screen layout"       0
-@advanced   checkbox  using-clickup             "Using embedded in ClickUp?"    0
-@advanced   checkbox  using-breathing           "Use breathing exercise loader" 0
-@advanced   checkbox  using-block-highlight     "Use active block highlight"    0
-@advanced   color     color-breathing-from      "Breathing Colour 1"            #1F7A8C
-@advanced   color     color-breathing-to        "Breathing Colour 2"            #BFDBF7
-@advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
-@advanced   color     color-heading-1           "H1 Colour"                     #e1e1e1
-@advanced   color     color-heading-2           "H2 Colour"                     #b9b9b9
-@advanced   color     color-heading-3           "H3 Colour"                     #808080
-@advanced   range     using-brighter-bold       "Use brighter bold"             [85, 0, 100, 5, '%']
+@advanced   text      color-tags                "Custom tag colours"                    ("Roam Research" "#263139_#69e3ff") ("Roam" "#263139_#69e3ff")
+@advanced   checkbox  hide-shortcuts            "Hide shortcuts heading"                1
+@advanced   checkbox  using-unset-overflow      "Show more text in link search"         0
+@advanced   checkbox  using-wide-layout         "Use wide layout"                       0
+@advanced   checkbox  using-split-screen        "Use split-screen layout"               0
+@advanced   checkbox  using-clickup             "Using embedded in ClickUp?"            0
+@advanced   checkbox  using-breathing           "Use breathing exercise loader"         0
+@advanced   checkbox  using-block-highlight     "Use active block highlight"            0
+@advanced   checkbox  using-matuschak-mode      "Experimental: Andy Matuschak Mode"     0
+@advanced   checkbox  using-masonry-layout      "Experimental: Masonry layout for Andy Matuschak Mode" 0
+@advanced   color     color-breathing-from      "Breathing Colour 1"                    #1F7A8C
+@advanced   color     color-breathing-to        "Breathing Colour 2"                    #BFDBF7
+@advanced   color     color-heading-2           "H2 Colour"                             #b9b9b9
+@advanced   color     color-heading-1           "H1 Colour"                             #e1e1e1
+@advanced   color     color-heading-2           "H2 Colour"                             #b9b9b9
+@advanced   color     color-heading-3           "H3 Colour"                             #808080
+@advanced   range     using-brighter-bold       "Use brighter bold"                     [85, 0, 100, 5, '%']
 @advanced   select    color-theme       "Theme" {
     "#TeamOrange": "255, 152, 0",
     "#TeamBlue": "51, 122, 183",
@@ -112,14 +114,14 @@
     "Forest Green": "46, 165, 44",
     "Jumbo": "117, 115, 128"
 }
-@advanced   checkbox  using-theme               "Use theme"                     1
-@advanced   color     color-link                "Link Colour"                   #0ab4ff
-@advanced   color     color-link-namespace      "Namespaced Link Colour"        rgb(8, 199, 224)
-@advanced   color     color-tag-text            "Tag Text Colour"               #69e3ff
-@advanced   color     color-tag-bg              "Tag Background Colour"         #263139
-@advanced   color     color-highlight-text      "Highlight Text Colour"         #FFFFFF
-@advanced   color     color-highlight-bg        "Highlight Background Colour"   #69e3ff
-@advanced   color     color-highlight-select    "Select Highlight Colour"       #0ab4ff33
+@advanced   checkbox  using-theme               "Use theme"                             1
+@advanced   color     color-link                "Link Colour"                           #0ab4ff
+@advanced   color     color-link-namespace      "Namespaced Link Colour"                rgb(8, 199, 224)
+@advanced   color     color-tag-text            "Tag Text Colour"                       #69e3ff
+@advanced   color     color-tag-bg              "Tag Background Colour"                 #263139
+@advanced   color     color-highlight-text      "Highlight Text Colour"                 #FFFFFF
+@advanced   color     color-highlight-bg        "Highlight Background Colour"           #69e3ff
+@advanced   color     color-highlight-select    "Select Highlight Colour"               #0ab4ff33
 ==/UserStyle== */
 /*! Roam Research Dark v0.0.1 (2020-13-17) */
 /*! Repository: https://github.com/vandermerwed/Roam-Research-Dark    */
@@ -249,8 +251,6 @@
         .roam-center {
             --align-item: left;
             flex-basis: 40% !important;
-
-            
         }
     }
     
@@ -436,6 +436,10 @@
         }
     }
     
+    .rm-page-ref-brackets {
+        color: #a7b6c2 !important;
+    }
+    
     .rm-page-ref-link-color,
     a {
         /* Page Reference Link Colour */
@@ -570,7 +574,7 @@
     }
     
     /* alias styling */
-    .rm-block-text > span > span:not(.roam-highlight) > span {
+    .rm-block-text span[style*="cursor: alias;"] {
         color: rgb(color-theme) !important;
         background-color: rgb(43, 52, 59) !important;
     }
@@ -723,22 +727,54 @@
     
     
     /* ### EXPERIMENTAL ###*/
-    /* .roam-sidebar-container {
-        overflow: hidden !important;
+    if(using-matuschak-mode) {
+        .roam-center {
+            flex: 1 1 100% !important;
+            flex-basis: 10% !important;
+        }
+
+        #right-sidebar {
+            background-color: #1e272e !important;
+
+            #roam-right-sidebar-content {
+                overflow: scroll !important;
+                white-space: wrap;
+                display: flex;
+
+                /* Below is for masonry layout */
+                if(using-masonry-layout) {
+                    flex-flow: column wrap;
+                }
+
+                > div {
+                    display: flex;
+                    flex: 1 0 40%;
+                    flex-direction: column;
+
+                    padding: 10px;
+                    border: 1px solid #2b343b !important;
+                    border-radius: 5px;
+                    background-color: #2b343b !important;
+                    align-self: flex-start;
+                    margin-right: 0px !important;
+
+                    /* Below is for masonry layout */
+                    if(using-masonry-layout) {
+                        margin-bottom: 16px;
+                        min-height: fit-content;
+                        width: 500px;
+                    }
+                }
+            }
+        }
+
+        .roam-log-container {
+            .roam-log-page {
+                padding: 10px;
+                border: 1px solid #2b343b;
+                border-radius: 5px;
+                background-color: #2b343b !important;
+            }
+        }
     }
-    .roam-sidebar-container.noselect:before {
-        // background-image: url(https://images.unsplash.com/photo-1589809489704-71becdce06f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
-        background-image: url(https://images.unsplash.com/photo-1559310589-2673bfe16970?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
-        width: 100%;
-        height: 100%;
-        content: "";
-        position: absolute;
-        background-repeat: no-repeat;
-        background-position: 75% 40%;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
-        opacity: 0.3;
-        filter: blur(4px);
-    }*/
 }
