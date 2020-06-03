@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.16
+@version      1.0.17
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -810,35 +810,6 @@ else {
 
 
 /* ### EXPERIMENTAL ###*/
-/*.roam-sidebar-content {
-        > .flex-h-box {
-            
-        }
-        
-        > div.log-button {
-            visibility: hidden;
-            > button {
-                visibility: visible;
-            }
-            &:after {
-                content: "t";
-                visibility: visible;
-              display: inline-block;
-            }
-        }
-        .log-button {
-            
-        }
-    }*/
-.roam-topbar {
-    > .flex-h-box {
-        /*flex-direction: column;*/
-        .bp3-popover-wrapper {
-            /*margin: 10px;*/
-        }
-    }
-}
-
 if(using-matuschak-mode) {
     .roam-center {
         flex: 1 1 100% !important;
@@ -848,26 +819,23 @@ if(using-matuschak-mode) {
     #right-sidebar {
         background-color: #1e272e !important;
 
+        /* container */
         #roam-right-sidebar-content {
             overflow: scroll !important;
-            white-space: wrap;
+            white-space: normal;
             display: flex;
+            align-content: flex-start;
 
             /* Below is for masonry layout */
             if(using-masonry-layout) {
                 flex-flow: column wrap;
             }
 
+            /* item */
             > div {
                 position: relative;
-                /*> div.flex-h-box {
-                        position: sticky;
-                        top: 0;
-                        align-self: flex-start;
-                        background-color: #1e272e !important;
-                    }*/
                 display: flex;
-                flex: 1 0 40%;
+                flex: 0 1 auto;
                 flex-direction: column;
 
                 padding: 10px;
@@ -876,14 +844,19 @@ if(using-matuschak-mode) {
                 background-color: #2b343b !important;
                 align-self: flex-start;
                 margin-right: 0px !important;
-                height: 780px;
-                overflow-y: scroll;
-
+                
                 /* Below is for masonry layout */
                 if(using-masonry-layout) {
                     margin-bottom: 16px;
                     min-height: fit-content;
-                    width: 500px;
+                    width: 600px;
+                }
+
+                > div:nth-child(2) {
+                    resize: vertical;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    max-height: 780px;
                 }
             }
         }
