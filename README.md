@@ -8,21 +8,11 @@ Install [Stylus](https://add0n.com/stylus.html) for either [Firefox](https://add
 
 [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css)
 
+If you're still unsure of how to do this [watch this great guide by Shu Omi](https://www.youtube.com/watch?v=s0EXtUEd5PE). Be sure to also [check out his other videos](https://www.youtube.com/channel/UC525q2RIufHjnaHOuIUFY9A).
+
 ## Settings
 
 ![Settings](roam_research_dark_theme_settings.png "More settings!")
-
-## TODO
-
-- [ ] Write guide on how to use this theme in Roam when embedded in ClickUp
-- [ ] Code Block styling
-- [ ] Text size customisation
-- [ ] Font weight customisation for headings
-- [x] Improve Block `{{embed: ((xyz))}}` styling
-- [ ] Improve `/` menu styling
-- [x] Improve `{{alias: ((xyz)) abc}}` styling
-- [ ] Improve Date Picker Styling
-- [ ] Better Filter styling
 
 ## Contributing
 
