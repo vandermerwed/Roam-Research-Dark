@@ -196,6 +196,25 @@ url-prefix("https://app.clickup.com/") {
         background-color: #9999 !important;
     }
 
+    
+    .kanban-card{
+        color: white;
+        background-color: #5C7080 !important;
+    }
+
+    .kanban-board{
+        background-color: #1e272e !important;
+    }
+
+    .kanban-column{
+        background-color: rgba(56, 64, 71, 0.8) !important;
+    }
+
+    .kanban-title{
+        color: orange;
+        font-weight: bold;
+    }
+    
     .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:contains("DAILY NOTES") {
         color: red;
     }
