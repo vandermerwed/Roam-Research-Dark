@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Roam Research Dark
 @namespace    vandermerwed
-@version      1.0.18
+@version      1.0.19
 @homepageURL  https://github.com/vandermerwed/Roam-Research-Dark
 @updateURL    https://raw.githubusercontent.com/vandermerwed/Roam-Research-Dark/master/roam-research-dark.user.css
 @license      CC-BY-SA-4.0
@@ -182,19 +182,31 @@ url-prefix("https://app.clickup.com/") {
     textarea {
         font-family: font-body;
     }
+    
+    .kanban-card{
+        color: white;
+        background-color: rgba(10, 10, 10, 0.25) !important;
+    }
+
+    .kanban-board{
+        background-color: #1e272e !important;
+    }
+
+    .kanban-column{
+        background-color: rgba(56, 64, 71, 0.8) !important;
+    }
+
+    .kanban-title{
+        if using-theme {
+            color: rgba(color-theme, 1);
+        }
+        else {
+            color: color-link;
+        }
+        font-weight: bold;
+    }
 
     /* Enable scroll bar */
-    /*div::-webkit-scrollbar {
-        width: 2px !important;
-        height: 2px !important;
-    }
-    div::-webkit-scrollbar-track {
-        background-color: #9993 !important;
-    }
-    div::-webkit-scrollbar-thumb {
-        background-color: #9999 !important;
-    }*/
-    
     /* Thanks to Palash Karia */
 
     /* OSX-like scrollbars 🤓 (width increases on hover)
