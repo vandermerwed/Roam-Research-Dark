@@ -184,7 +184,7 @@ url-prefix("https://app.clickup.com/") {
     }
 
     /* Enable scroll bar */
-    div::-webkit-scrollbar {
+    /*div::-webkit-scrollbar {
         width: 2px !important;
         height: 2px !important;
     }
@@ -193,6 +193,43 @@ url-prefix("https://app.clickup.com/") {
     }
     div::-webkit-scrollbar-thumb {
         background-color: #9999 !important;
+    }*/
+    
+    /* Thanks to Palash Karia */
+
+    /* OSX-like scrollbars 🤓 (width increases on hover)
+     * default width is 6px - increases to 8px on hover
+     * spacing around is 2px (defined by the same-colored border)
+    */
+    div::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+      border-radius: 20px;
+    }
+
+    div::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 20px;
+    }
+
+    div::-webkit-scrollbar-thumb {
+      border-color: #1e272e;
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 20px;
+    }
+
+    div::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+      border-color: transparent;
+      border-width: 1px;
+      border-style: solid;
+    }
+
+    #right-sidebar {
+      .rm-reference-main {
+        padding-right: 5px;
+      }
     }
 
     /* change font for headings */
