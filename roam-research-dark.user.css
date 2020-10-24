@@ -195,10 +195,6 @@ url-prefix("https://app.clickup.com/") {
         background-color: #9999 !important;
     }
 
-    .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content .log-button:contains("DAILY NOTES") {
-        color: red;
-    }
-
     /* change font for headings */
     #right-sidebar .rm-level2,
     /* page headings in right sidebar */
@@ -303,16 +299,34 @@ url-prefix("https://app.clickup.com/") {
 
     /* ### LEFT SIDE BAR ### */
     /* update menu item hover colour*/
-    .roam-body .roam-app .roam-sidebar-container .roam-sidebar-content {
-        .log-button {
-            &:hover {
-                background-color: #1e272e !important;
+    .roam-body .roam-app .roam-sidebar-container {
+        .roam-sidebar-content {
+            .log-button {
+                &:hover {
+                    background-color: #1e272e !important;
+                }
+            }
+
+            .starred-pages-wrapper .starred-pages .page {
+                &:hover {
+                    background-color: #1e272e !important;
+                }
             }
         }
-
-        .starred-pages-wrapper .starred-pages .page {
-            &:hover {
-                background-color: #1e272e !important;
+        
+        .rm-graph-dropdown {
+            .menu-title {
+                color: #CED9E0 !important;
+            }
+            
+            a {
+                color: #8A9BA8;
+            }
+            
+            .setting {
+                a {
+                    color: #182026;
+                }
             }
         }
     }
