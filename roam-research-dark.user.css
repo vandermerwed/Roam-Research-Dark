@@ -88,8 +88,7 @@
 @advanced   checkbox  using-clickup             "Use embedded in ClickUp?"              0
 @advanced   checkbox  using-breathing           "Use breathing exercise loader"         0
 @advanced   checkbox  using-block-highlight     "Use active block highlight"            0
-@advanced   checkbox  using-matuschak-mode      "Experimental: Andy Matuschak Mode"     0
-@advanced   checkbox  using-masonry-layout      "Experimental: Masonry layout for Andy Matuschak Mode" 0
+@advanced   checkbox  using-masonry-layout      "Experimental: Masonry Mode"            0
 @advanced   color     color-breathing-from      "Breathing Colour 1"                    #1F7A8C
 @advanced   color     color-breathing-to        "Breathing Colour 2"                    #BFDBF7
 @advanced   color     color-heading-2           "H2 Colour"                             #b9b9b9
@@ -699,177 +698,185 @@ url-prefix("https://app.clickup.com/") {
                 span.rm-page-ref[data-tag=\"{key}\"] {
  background-color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[0]);
                 color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[1]);
+                }
+
+                div.bp3-elevation-3 div[title=\"{key}\"] {
+     background-color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[0]);
+                color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[1]);
+                }
             }
-
-            div.bp3-elevation-3 div[title=\"{key}\"] {
- background-color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[0]);
-            color: unquote(split(_, values(color-tags)[index(keys(color-tags), key)])[1]);
         }
-    }
-}
 
-}
-
-/* Elements */
-.bp3-input {
-    background: #FFFFFF;
-    background: rgba(255, 255, 255, .05);
-    color: #d9d9d9 !important;
-}
-if using-unset-overflow {
-    .bp3-text-overflow-ellipsis {
-        /* Credit to  @Malcolm Ocean */
-        text-overflow: unset;
-        white-space: unset;
     }
-}
-.bp3-elevation-3 {
-    background-color: rgb(43, 52, 59) !important;
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
-    color: #5C7080 !important;
-    /* Style highlighted item in '/' menu */
-    div.dont-unfocus-block {
-        &:hover,
-        &:focus,
-        &:active {
-            background-color: #1e272e !important;
-        }
-    }
-}
-.bp3-datepicker {
-    background-color: rgb(43, 52, 59) !important;
-    /*color: #5C7080 !important;*/
-    color: #fff !important
-}
-.bp3-popover {
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
-}
-.bp3-popover-content {
-    background-color: #384047 !important;
-    color: #5C7080 !important;
-}
-.bp3-popover-arrow-fill {
-    fill: rgb(43, 52, 59) !important;
-}
-.bp3-popover-arrow-border {
-    fill: rgb(255, 255, 255) !important;
-}
-.bp3-dialog {
-    background-color: rgb(43, 52, 59) !important;
-    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
-    color: #5C7080 !important;
 
-    textarea {
+    /* Elements */
+    .bp3-input {
+        background: #FFFFFF;
+        background: rgba(255, 255, 255, .05);
         color: #d9d9d9 !important;
-        background-color: rgba(56, 64, 71, 0.8) !important;
     }
-}
-.bp3-menu {
-    /*background-color: rgb(43, 52, 59) !important;*/
-    background-color: rgb(56, 64, 71) !important;
-    /*color: #D9D9D9 !important;*/
-    color: #aeacb0;
-}
-.bp3-menu-item:hover {
-    background-color: #1e272e !important;
-}
-.bp3-html-select > select {
-    color: #fff
-}
-.bp3-button {
-    background-color: rgba(56, 64, 71, 0.8) !important;
-    background-image: none !important;
-    color: #d9d9d9 !important;
-    padding: 0;
-}
-.bp3-button.bp3-minimal:hover {
-    background-color: rgba(56, 64, 71, .4) !important;
-}
-
-if using-clickup {
-    .intercom-namespace .intercom-launcher-frame {
-        bottom: 566px;
-        right: 22px !important;
+    if using-unset-overflow {
+        .bp3-text-overflow-ellipsis {
+            /* Credit to  @Malcolm Ocean */
+            text-overflow: unset;
+            white-space: unset;
+        }
     }
-
-    #buffer {
-        bottom: 184px !important;
-        right: 22px !important;
+    .bp3-elevation-3 {
+        background-color: rgb(43, 52, 59) !important;
+        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
+        color: #5C7080 !important;
+        /* Style highlighted item in '/' menu */
+        div.dont-unfocus-block {
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: #1e272e !important;
+            }
+        }
     }
-}
-else {
-    .intercom-namespace .intercom-launcher-frame {
-        bottom: 480px;
+    .bp3-datepicker {
+        background-color: rgb(43, 52, 59) !important;
+        /*color: #5C7080 !important;*/
+        color: #fff !important
     }
-
-    #buffer {
-        bottom: 70px !important;
-        right: 18px !important;
+    .bp3-popover {
+        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
     }
-}
-
-
-/* ### EXPERIMENTAL ###*/
-if(using-matuschak-mode) {
-    .roam-center {
-        flex: 1 1 100% !important;
-        flex-basis: 10% !important;
+    .bp3-popover-content {
+        background-color: #384047 !important;
+        color: #5C7080 !important;
     }
+    .bp3-popover-arrow-fill {
+        fill: rgb(43, 52, 59) !important;
+    }
+    .bp3-popover-arrow-border {
+        fill: rgb(255, 255, 255) !important;
+    }
+    .bp3-dialog {
+        background-color: rgb(43, 52, 59) !important;
+        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .4);
+        color: #5C7080 !important;
 
-    #right-sidebar {
+        textarea {
+            color: #d9d9d9 !important;
+            background-color: rgba(56, 64, 71, 0.8) !important;
+        }
+    }
+    .bp3-menu {
+        /*background-color: rgb(43, 52, 59) !important;*/
+        background-color: rgb(56, 64, 71) !important;
+        /*color: #D9D9D9 !important;*/
+        color: #aeacb0;
+    }
+    .bp3-menu-item:hover {
         background-color: #1e272e !important;
+    }
+    .bp3-html-select > select {
+        color: #fff
+    }
+    .bp3-button {
+        background-color: rgba(56, 64, 71, 0.8) !important;
+        background-image: none !important;
+        color: #d9d9d9 !important;
+        padding: 0;
+    }
+    .bp3-button.bp3-minimal:hover {
+        background-color: rgba(56, 64, 71, .4) !important;
+    }
 
-        /* container */
-        #roam-right-sidebar-content {
+    if using-clickup {
+        .intercom-namespace .intercom-launcher-frame {
+            bottom: 566px;
+            right: 22px !important;
+        }
+
+        #buffer {
+            bottom: 184px !important;
+            right: 22px !important;
+        }
+    }
+    else {
+        .intercom-namespace .intercom-launcher-frame {
+            bottom: 480px;
+        }
+
+        #buffer {
+            bottom: 70px !important;
+            right: 18px !important;
+        }
+    }
+
+
+    /* ### EXPERIMENTAL ###*/
+    if(using-masonry-layout) {
+        #app {
+          .roam-main {
+            .roam-body-main {
+              .roam-center {
+                flex: 1 1 100% !important;
+                flex-basis: 10% !important;
+              }
+            }
+          }
+        }
+        
+        #right-sidebar {
+          /* container */
+          #roam-right-sidebar-content {
             overflow: scroll !important;
             white-space: normal;
             display: flex;
-            align-content: flex-start;
+            flex-flow: column wrap;
 
-            /* Below is for masonry layout */
-            if(using-masonry-layout) {
-                flex-flow: column wrap;
-            }
-
-            /* item */
-            > div {
+            .sidebar-content {
+              overflow: scroll !important;
+              white-space: normal;
+              display: flex;
+              align-content: flex-start;
+              flex-flow: column wrap;
+              /* item */
+              > div {
                 position: relative;
                 display: flex;
                 flex: 0 1 auto;
                 flex-direction: column;
-
-                padding: 10px;
-                border: 1px solid #2b343b !important;
-                border-radius: 5px;
-                background-color: #2b343b !important;
                 align-self: flex-start;
                 margin-right: 0px !important;
-                
-                /* Below is for masonry layout */
-                if(using-masonry-layout) {
-                    margin-bottom: 16px;
-                    min-height: fit-content;
-                    width: 600px;
-                }
+                margin-left: 15px;
 
-                > div:nth-child(2) {
-                    resize: vertical;
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                    max-height: 780px;
+                /* TODO: Move to variable - or figure out a way to make this work in all themes */
+                padding: 10px;
+                border-radius: 5px;
+
+                margin-bottom: 16px;
+                min-height: fit-content;
+
+                /* TODO: Make this a configurable */
+                width: 600px;
+                background-color: #1e272e !important;
+                border: 1px solid #1e272e !important;
+
+                /* item content */
+                > div > div:nth-child(2) {
+                  resize: vertical;
+                  overflow-y: auto;
+                  overflow-x: hidden;
+
+                  /* TODO: Make this a configurable */
+                  max-height: 825px;
+
+                  > div {
+                    > div.flex-v-box {
+                      margin-left: 0px !important;
+                    }
+                  }
                 }
+              }
             }
+          }
         }
-    }
 
-    .roam-log-container {
-        .roam-log-page {
-            padding: 10px;
-            border: 1px solid #2b343b;
-            border-radius: 5px;
-            background-color: #2b343b !important;
-        }
     }
-}
 
 }
