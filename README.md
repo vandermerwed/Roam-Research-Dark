@@ -1,4 +1,5 @@
-# ℹ Notice: Most of my efforts are currently focussed on [Roam Mosaic](https://github.com/roam-mosaic/theme-boilerplate) ℹ
+# ℹ Notice ℹ
+## Most of my efforts are currently focussed on [Roam Mosaic](https://github.com/roam-mosaic/theme-boilerplate)
 I'm currently focussed on building a framework for theming called Roam Mosaic. Roam Research Dark will return as a Roam Mosaic theme soon.
 
 # Roam Research Dark
